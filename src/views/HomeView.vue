@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import mqtt from 'mqtt'
 
@@ -35,7 +35,7 @@ client.value.on('message', (topic, message) => {
 })
 
 onUnmounted(() => {
-  client.value.disconnect()
+  client.value.end()
 })
 </script>
 
