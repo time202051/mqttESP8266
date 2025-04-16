@@ -12,16 +12,21 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import mqtt from 'mqtt'
 
-const client = ref(null);
+const client = ref<any>(null);
 const receivedMessage = ref('')
-
-client.value = mqtt.connect('ws://broker.emqx.io:8083/mqtt', {
-  clientId: 'vue3_client_' + Math.random().toString(16).substr(2, 8)
+// wss://broker.emqx.io:8084/mqtt
+// ws://broker.emqx.io:8083/mqtt
+client.value = mqtt.connect('wss://broker.emqx.io:8084/mqtt', {
+  clientId: 'vue3_client_' + Math.random().toString(16).substr(2, 8),
+  protocol: 'wss',  // 明确指定协议
+  path: '/mqtt',   // 与vite.config.ts中的代理路径一致
+  port: 8084,      // 代理目标端口
+  rejectUnauthorized: false  // 如果使用自签名证书
 })
 
 client.value.on('connect', () => {
   console.log('MQTT连接成功')
-  client.value.subscribe('vue3/demo', (error) => {
+  client.value.subscribe('vue3/demo', (error: any) => {
     if (!error) {
       console.log('MQTT订阅成功')
     }
@@ -29,7 +34,7 @@ client.value.on('connect', () => {
 })
 
 // 添加消息接收处理
-client.value.on('message', (topic, message) => {
+client.value.on('message', (topic: any, message: any) => {
   receivedMessage.value = message.toString()
   console.log('MQTT收到消息:', message.toString())
 })
