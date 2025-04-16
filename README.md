@@ -2,6 +2,8 @@
 
 当前[mqttESP8266](https://github.com/time202051/mqttESP8266)项目和[mqttA](https://github.com/time202051/mqttA)项目实现的聊天demo，基于vue3+mqtt.js实现，使用mqtt.js实现了mqtt协议的连接，订阅，发布，接收消息等功能。
 
+![Local demo](./src/assets/demo.png "Local demo")
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
