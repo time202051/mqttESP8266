@@ -1,6 +1,6 @@
 # mqttEsp8266
 
-This template should help get you started developing with Vue 3 in Vite.
+当前[mqttESP8266](https://github.com/time202051/mqttESP8266)项目和[mqttA](https://github.com/time202051/mqttA)项目实现的聊天demo，基于vue3+mqtt.js实现，使用mqtt.js实现了mqtt协议的连接，订阅，发布，接收消息等功能。
 
 ## Recommended IDE Setup
 
